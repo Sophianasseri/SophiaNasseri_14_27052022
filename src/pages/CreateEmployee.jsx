@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import useModal from '../hooks/useModal';
 import { Modal } from 'sn-react-modal-component';
+import DateInput from '../components/DateInput/DateInput';
 
 const CreateEmployee = () => {
   const { isOpen, toggle } = useModal();
@@ -19,11 +20,9 @@ const CreateEmployee = () => {
           <label htmlFor="last-name">Last Name</label>
           <input type="text" id="last-name" />
 
-          <label htmlFor="date-of-birth">Date of Birth</label>
-          <input id="date-of-birth" type="text" />
+          <DateInput name="date-of-birth" content="Date of Birth" />
+          <DateInput name="start-date" content="Start Date" />
 
-          <label htmlFor="start-date">Start Date</label>
-          <input id="start-date" type="text" />
           <fieldset className="address">
             <legend>Address</legend>
 
