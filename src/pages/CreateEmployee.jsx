@@ -1,10 +1,23 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useModal from '../hooks/useModal';
+
+import { states, department } from '../Data/data';
+
 import { Modal } from 'sn-react-modal-component';
 import DateInput from '../components/DateInput/DateInput';
+import Select from 'react-select';
+
+//Format states data so we can use it in select component
+const stateOptions = states.map((state) => ({
+  value: state.abbreviation,
+  label: state.name,
+}));
 
 const CreateEmployee = () => {
+  const [selectedOption, setSelectedOption] = useState();
   const { isOpen, toggle } = useModal();
+
   return (
     <>
       <div className="title">
@@ -33,20 +46,18 @@ const CreateEmployee = () => {
             <input id="city" type="text" />
 
             <label htmlFor="state">State</label>
-            <select name="state" id="state"></select>
+            <Select
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={stateOptions}
+            />
 
             <label htmlFor="zip-code">Zip Code</label>
             <input id="zip-code" type="number" />
           </fieldset>
 
           <label htmlFor="department">Department</label>
-          <select name="department" id="department">
-            <option>Sales</option>
-            <option>Marketing</option>
-            <option>Engineering</option>
-            <option>Human Resources</option>
-            <option>Legal</option>
-          </select>
+          <Select options={department} />
         </form>
 
         <button onClick={toggle}>Save</button>
