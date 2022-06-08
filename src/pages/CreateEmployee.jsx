@@ -15,7 +15,6 @@ const stateOptions = states.map((state) => ({
 }));
 
 const CreateEmployee = () => {
-  const [selectedOption, setSelectedOption] = useState();
   const { isOpen, toggle } = useModal();
 
   return (
@@ -47,9 +46,8 @@ const CreateEmployee = () => {
 
             <label htmlFor="state">State</label>
             <Select
-              defaultValue={selectedOption}
-              onChange={setSelectedOption}
               options={stateOptions}
+              defaultValue={{ value: 'AL', label: 'Alabama' }}
             />
 
             <label htmlFor="zip-code">Zip Code</label>
@@ -57,7 +55,10 @@ const CreateEmployee = () => {
           </fieldset>
 
           <label htmlFor="department">Department</label>
-          <Select options={department} />
+          <Select
+            options={department}
+            defaultValue={{ value: 'sales', label: 'Sales' }}
+          />
         </form>
 
         <button onClick={toggle}>Save</button>
