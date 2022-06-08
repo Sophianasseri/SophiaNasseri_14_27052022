@@ -260,4 +260,81 @@ const department = [
   },
 ];
 
-export { states, department };
+const mockedData = [
+  {
+    id: 1,
+    firstName: 'Lynda',
+    lastName: 'Sherr',
+    startDate: '21/01/2019',
+    department: 'Sales',
+    dateOfBirth: '12/07/1985',
+    street: '12649 Hermina Crossing',
+    city: 'El Paso',
+    state: 'TX',
+    zipCode: '48167',
+  },
+  {
+    id: 2,
+    firstName: 'Conny',
+    lastName: 'Gounet',
+    startDate: '12/09/2017',
+    department: 'Marketing',
+    dateOfBirth: '18/02/1992',
+    street: '634 Pennsylvania Road',
+    city: 'Fairfield',
+    state: 'CT',
+    zipCode: '31601',
+  },
+  {
+    id: 3,
+    firstName: 'Davis',
+    lastName: 'Rapelli',
+    startDate: '25/08/2021',
+    department: 'Human Resources',
+    dateOfBirth: '02/05/1977',
+    street: '033 Parkside Way',
+    city: 'Columbus',
+    state: 'OH',
+    zipCode: '45726',
+  },
+  {
+    id: 4,
+    firstName: 'Abdul',
+    lastName: 'Davy',
+    startDate: '22/11/2010',
+    department: 'Human Resources',
+    dateOfBirth: '10/10/1965',
+    street: '02 Brentwood Terrace',
+    city: 'Portsmouth',
+    state: 'NH',
+    zipCode: '38571',
+  },
+
+  {
+    id: 5,
+    firstName: 'Marjorie',
+    lastName: 'Acock',
+    startDate: '17/02/1998',
+    department: 'Engineering',
+    dateOfBirth: '30/09/1973',
+    street: '7867 Johnson Road',
+    city: 'Sacramento',
+    state: 'CA',
+    zipCode: '51106',
+  },
+
+  {
+    id: 6,
+    firstName: 'Marshall',
+    lastName: 'Le febre',
+    startDate: '04/03/2022',
+    department: 'Legal',
+    dateOfBirth: '25/04/2000',
+    street: '624 Welch Circle',
+    city: 'Minneapolis',
+    state: 'MN',
+    zipCode: '55912',
+  },
+];
+
+export { states, department, mockedData };
