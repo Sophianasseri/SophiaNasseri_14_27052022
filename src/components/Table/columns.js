@@ -1,3 +1,4 @@
+import { formatISO, format } from 'date-fns';
 export const COLUMNS = [
   {
     Header: 'Id',
@@ -13,7 +14,10 @@ export const COLUMNS = [
   },
   {
     Header: 'Start Date',
-    accessor: 'startDate',
+    accessor: (row) => formatISO(new Date(row.startDate)),
+    Cell: ({ value }) => {
+      return format(new Date(value), 'MM/dd/yyyy');
+    },
   },
   {
     Header: 'Department',
@@ -21,7 +25,10 @@ export const COLUMNS = [
   },
   {
     Header: 'Date of Birth',
-    accessor: 'dateOfBirth',
+    accessor: (row) => formatISO(new Date(row.dateOfBirth)),
+    Cell: ({ value }) => {
+      return format(new Date(value), 'MM/dd/yyyy');
+    },
   },
   {
     Header: 'Street',
