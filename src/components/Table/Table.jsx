@@ -22,16 +22,18 @@ const Table = () => {
     }
   }, []);
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => items, []);
+  const data = useMemo(() => mockedData, []);
 
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
+    rows,
     page,
     prepareRow,
     state,
     setGlobalFilter,
+    preGlobalFilteredRows,
     nextPage,
     previousPage,
     canNextPage,
@@ -50,6 +52,26 @@ const Table = () => {
   );
 
   const { globalFilter, pageIndex, pageSize } = state;
+
+  const EntriesCount = () => {
+    const entryStart = pageIndex * pageSize + 1;
+    const entryEnd = entryStart + page.length - 1;
+
+    return rows.length > 0 ? (
+      globalFilter ? (
+        <span>
+          Showing {entryStart} to {entryEnd} of {rows.length} entries (filterd
+          from {preGlobalFilteredRows.length} total entries)
+        </span>
+      ) : (
+        <span>
+          Showing {entryStart} to {entryEnd} of {rows.length} entries
+        </span>
+      )
+    ) : (
+      <span>No entries</span>
+    );
+  };
 
   return (
     <>
@@ -99,7 +121,9 @@ const Table = () => {
           })}
         </tbody>
       </table>
+
       <div>
+        <EntriesCount />
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
           Previous
         </button>
