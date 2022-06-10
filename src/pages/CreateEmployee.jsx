@@ -31,6 +31,29 @@ const CreateEmployee = () => {
     localStorage.setItem('firstName', JSON.stringify(firstName));
   }, [firstName]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newEmployee = {
+      firstName,
+      lastName,
+      dateOfBirth,
+      startDate,
+      street,
+      city,
+      state: usState,
+      zipCode,
+      department: dpt,
+    };
+    // si props employees est vide alors on check le localstorage
+    const employees = localStorage.getItem('employees')
+      ? JSON.parse(localStorage.getItem('employees'))
+      : [];
+    employees.push(newEmployee);
+
+    localStorage.setItem('employees', JSON.stringify(employees));
+
+    toggle();
+  };
   return (
     <>
       <div className="title">
@@ -103,11 +126,16 @@ const CreateEmployee = () => {
             defaultValue={{ value: 'sales', label: 'Sales' }}
             onChange={(e) => setDpt(e.target.value)}
           />
+          <button
+            type="submit"
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            Save
+          </button>
         </form>
 
-        <button type="submit" onClick={toggle}>
-          Save
-        </button>
         <Modal isOpen={isOpen} hide={toggle}>
           <p>Employee Created!</p>
         </Modal>
