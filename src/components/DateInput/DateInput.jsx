@@ -1,8 +1,8 @@
-const DateInput = ({ name, content }) => {
+const DateInput = ({ name, content, onChange }) => {
   return (
     <>
       <label htmlFor={name}>{content}</label>
-      <input type="date" id={name} />
+      <input type="date" id={name} onChange={onChange} />
     </>
   );
 };

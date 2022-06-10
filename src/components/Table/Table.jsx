@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   useTable,
   useGlobalFilter,
@@ -10,6 +10,14 @@ import { COLUMNS } from './columns';
 import GlobalFilter from './GlobalFilter/GlobalFilter';
 
 const Table = () => {
+  const [items, setItems] = useState();
+
+  useEffect(() => {
+    const items = localStorage.getItem('firstName');
+    if (items) {
+      setItems(items);
+    }
+  }, []);
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => mockedData, []);
 
