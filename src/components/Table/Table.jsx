@@ -22,7 +22,6 @@ const Table = () => {
     const employees = localStorage.getItem('employees')
       ? JSON.parse(localStorage.getItem('employees'))
       : [];
-    console.log(employees);
     if (employees) {
       setItems(employees);
     }

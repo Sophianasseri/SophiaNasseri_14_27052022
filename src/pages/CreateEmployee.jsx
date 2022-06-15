@@ -62,10 +62,10 @@ const CreateEmployee = () => {
   };
   return (
     <>
-      <div className="title">
-        <h1>HRnet</h1>
-      </div>
-      <div className="container">
+      <div className="page-container">
+        <div className="title">
+          <h1>HRnet</h1>
+        </div>
         <Link to="/current-employee">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form id="create-employee">
@@ -141,11 +141,10 @@ const CreateEmployee = () => {
             Save
           </button>
         </form>
-
-        <Modal isOpen={isOpen} hide={toggle}>
-          <p>Employee Created!</p>
-        </Modal>
       </div>
+      <Modal isOpen={isOpen} hide={toggle}>
+        <p>Employee Created!</p>
+      </Modal>
     </>
   );
 };
