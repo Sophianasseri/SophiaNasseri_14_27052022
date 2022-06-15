@@ -25,9 +25,9 @@ const CreateEmployee = () => {
   const [startDate, setStartDate] = useState();
   const [street, setStreet] = useState();
   const [city, setCity] = useState();
-  const [usState, setUsState] = useState();
+  const [usState, setUsState] = useState('AL');
   const [zipCode, setZipCode] = useState();
-  const [dpt, setDpt] = useState();
+  const [dpt, setDpt] = useState('sales');
 
   const dispatch = useDispatch();
 
@@ -114,8 +114,8 @@ const CreateEmployee = () => {
             <label htmlFor="state">State</label>
             <Select
               options={stateOptions}
-              defaultValue={{ value: 'AL', label: 'Alabama' }}
-              onChange={(e) => setUsState(e.target.value)}
+              defaultValue={stateOptions[0]}
+              onChange={(e) => setUsState(e.value)}
             />
 
             <label htmlFor="zip-code">Zip Code</label>
@@ -129,8 +129,8 @@ const CreateEmployee = () => {
           <label htmlFor="department">Department</label>
           <Select
             options={department}
-            defaultValue={{ value: 'sales', label: 'Sales' }}
-            onChange={(e) => setDpt(e.target.value)}
+            defaultValue={department[0]}
+            onChange={(e) => setDpt(e.value)}
           />
           <button
             type="submit"
