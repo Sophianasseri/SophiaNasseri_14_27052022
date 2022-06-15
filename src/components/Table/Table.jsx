@@ -1,16 +1,22 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   useTable,
   useGlobalFilter,
   useSortBy,
   usePagination,
 } from 'react-table';
+
 import { mockedData } from '../../Data/data';
 import { COLUMNS } from './columns';
+
 import GlobalFilter from './GlobalFilter/GlobalFilter';
 
 const Table = () => {
   const [items, setItems] = useState([]);
+  const getState = useSelector((state) => state.employee);
+  let stateData = [];
+  stateData.push(getState);
 
   useEffect(() => {
     const employees = localStorage.getItem('employees')
@@ -22,7 +28,7 @@ const Table = () => {
     }
   }, []);
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => mockedData, []);
+  const data = useMemo(() => stateData, []);
 
   const {
     getTableProps,

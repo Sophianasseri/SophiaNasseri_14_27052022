@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import useModal from '../hooks/useModal';
+import { saveEmployee } from '../Redux/employeeSlice';
 
 import { states, department } from '../Data/data';
 
@@ -27,6 +29,8 @@ const CreateEmployee = () => {
   const [zipCode, setZipCode] = useState();
   const [dpt, setDpt] = useState();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     localStorage.setItem('firstName', JSON.stringify(firstName));
   }, [firstName]);
@@ -44,6 +48,8 @@ const CreateEmployee = () => {
       zipCode,
       department: dpt,
     };
+    dispatch(saveEmployee(newEmployee));
+
     // si props employees est vide alors on check le localstorage
     const employees = localStorage.getItem('employees')
       ? JSON.parse(localStorage.getItem('employees'))
