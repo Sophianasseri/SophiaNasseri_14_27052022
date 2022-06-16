@@ -13,6 +13,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
     <span>
       Search :{' '}
       <input
+        className="search-input"
         value={value || ''}
         onChange={(e) => {
           setValue(e.target.value);

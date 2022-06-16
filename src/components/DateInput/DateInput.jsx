@@ -2,7 +2,7 @@ const DateInput = ({ name, content, onChange }) => {
   return (
     <>
       <label htmlFor={name}>{content}</label>
-      <input type="date" id={name} onChange={onChange} />
+      <input className="form-input" type="date" id={name} onChange={onChange} />
     </>
   );
 };

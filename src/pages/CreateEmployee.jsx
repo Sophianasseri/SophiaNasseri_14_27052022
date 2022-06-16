@@ -67,10 +67,11 @@ const CreateEmployee = () => {
           <h1>HRnet</h1>
         </div>
         <Link to="/current-employee">View Current Employees</Link>
-        <h2>Create Employee</h2>
+        <h2 className="form-title">Create Employee</h2>
         <form id="create-employee">
           <label htmlFor="first-name">First Name</label>
           <input
+            className="form-input"
             type="text"
             id="first-name"
             onChange={(e) => setFirstName(e.target.value)}
@@ -78,17 +79,20 @@ const CreateEmployee = () => {
 
           <label htmlFor="last-name">Last Name</label>
           <input
+            className="form-input"
             type="text"
             id="last-name"
             onChange={(e) => setLastName(e.target.value)}
           />
 
           <DateInput
+            className="form-input"
             name="date-of-birth"
             content="Date of Birth"
             onChange={(e) => setStartDate(e.target.value)}
           />
           <DateInput
+            className="form-input"
             name="start-date"
             content="Start Date"
             onChange={(e) => setDateOfBirth(e.target.value)}
@@ -99,6 +103,7 @@ const CreateEmployee = () => {
 
             <label htmlFor="street">Street</label>
             <input
+              className="form-input"
               id="street"
               type="text"
               onChange={(e) => setStreet(e.target.value)}
@@ -106,6 +111,7 @@ const CreateEmployee = () => {
 
             <label htmlFor="city">City</label>
             <input
+              className="form-input"
               id="city"
               type="text"
               onChange={(e) => setCity(e.target.value)}
@@ -120,6 +126,7 @@ const CreateEmployee = () => {
 
             <label htmlFor="zip-code">Zip Code</label>
             <input
+              className="form-input"
               id="zip-code"
               type="number"
               onChange={(e) => setZipCode(e.target.value)}
@@ -133,6 +140,7 @@ const CreateEmployee = () => {
             onChange={(e) => setDpt(e.value)}
           />
           <button
+            className="submit-btn btn"
             type="submit"
             onClick={(e) => {
               handleSubmit(e);

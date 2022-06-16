@@ -18,7 +18,6 @@ const Table = () => {
   const getState = useSelector((state) => state.employee);
   let stateData = [];
   stateData.push(getState);
-  console.log(getState);
 
   /* useEffect(() => {
     const employees = localStorage.getItem('employees')
@@ -29,7 +28,7 @@ const Table = () => {
     }
   }, []);*/
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => stateData, []);
+  const data = useMemo(() => mockedData, []);
 
   const {
     getTableProps,
@@ -82,32 +81,59 @@ const Table = () => {
 
   return (
     <>
-      <span>
-        Show
-        <select
-          value={pageSize}
-          onChange={(e) => setPageSize(Number(e.target.value))}
-        >
-          {[10, 25, 50, 100].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              {pageSize}
-            </option>
-          ))}
-        </select>
-        entries
-      </span>
+      <div className="filter">
+        <div>
+          <span>Show</span>
+          <select
+            className="entry-select"
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+          >
+            {[10, 25, 50, 100].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                {pageSize}
+              </option>
+            ))}
+          </select>
+          <span>entries</span>
+        </div>
 
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      </div>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                  {column.render('Header')}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? '🔻' : '🔺') : ''}
-                  </span>
+                  <div className="column-header">
+                    {column.render('Header')}
+
+                    <div className="sort-arrows">
+                      <span
+                        className={`${
+                          column.isSorted
+                            ? column.isSortedDesc
+                              ? ''
+                              : 'active'
+                            : ''
+                        }`}
+                      >
+                        ▲
+                      </span>
+                      <span
+                        className={`${
+                          column.isSorted
+                            ? column.isSortedDesc
+                              ? 'active'
+                              : ''
+                            : ''
+                        }`}
+                      >
+                        ▼
+                      </span>
+                    </div>
+                  </div>
                 </th>
               ))}
             </tr>
@@ -129,30 +155,41 @@ const Table = () => {
         </tbody>
       </table>
 
-      <div>
+      <div className="pagination">
         <EntriesCount />
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          Previous
-        </button>
-        <span>
-          <input
-            type="number"
-            defaultValue={pageIndex + 1}
-            min={pageOptions.length - 1}
-            max={pageOptions.length}
-            onChange={(e) => {
-              const pageNumber = e.target.value
-                ? Number(e.target.value) - 1
-                : 0;
-              gotoPage(pageNumber);
-            }}
-          />
-          of {pageOptions.length}
-        </span>
+        <div>
+          <button
+            className="page-btn btn"
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+          >
+            Previous
+          </button>
+          <span>
+            <input
+              className="page-input"
+              type="number"
+              defaultValue={pageIndex + 1}
+              min={pageOptions.length - 1}
+              max={pageOptions.length}
+              onChange={(e) => {
+                const pageNumber = e.target.value
+                  ? Number(e.target.value) - 1
+                  : 0;
+                gotoPage(pageNumber);
+              }}
+            />
+            of {pageOptions.length}
+          </span>
 
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          Next
-        </button>
+          <button
+            className="page-btn btn"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </>
   );

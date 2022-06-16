@@ -1,10 +1,6 @@
 import { formatISO, format } from 'date-fns';
 export const COLUMNS = [
   {
-    Header: 'Id',
-    accessor: 'id',
-  },
-  {
     Header: 'First Name',
     accessor: 'firstName',
   },
