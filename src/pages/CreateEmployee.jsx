@@ -51,12 +51,12 @@ const CreateEmployee = () => {
     dispatch(saveEmployee(newEmployee));
 
     // si props employees est vide alors on check le localstorage
-    const employees = localStorage.getItem('employees')
+    /*const employees = localStorage.getItem('employees')
       ? JSON.parse(localStorage.getItem('employees'))
       : [];
     employees.push(newEmployee);
 
-    localStorage.setItem('employees', JSON.stringify(employees));
+    localStorage.setItem('employees', JSON.stringify(employees));*/
 
     toggle();
   };
