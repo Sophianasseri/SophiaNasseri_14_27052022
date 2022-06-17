@@ -15,10 +15,10 @@ import GlobalFilter from './GlobalFilter/GlobalFilter';
 const Table = () => {
   //const [items, setItems] = useState([]);
 
-  const firstName = useSelector((state) => state.employee);
+  const firstName = useSelector((state) => state.employees);
 
-  let stateData = [];
-  stateData.push(firstName);
+  let stateData = [...useSelector((state) => state.employees)];
+  //stateData.push(firstName);
   console.log(stateData);
 
   /* useEffect(() => {
