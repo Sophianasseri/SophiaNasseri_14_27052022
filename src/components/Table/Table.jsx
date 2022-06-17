@@ -15,9 +15,11 @@ import GlobalFilter from './GlobalFilter/GlobalFilter';
 const Table = () => {
   //const [items, setItems] = useState([]);
 
-  const getState = useSelector((state) => state.employee);
+  const firstName = useSelector((state) => state.employee);
+
   let stateData = [];
-  stateData.push(getState);
+  stateData.push(firstName);
+  console.log(stateData);
 
   /* useEffect(() => {
     const employees = localStorage.getItem('employees')
@@ -28,7 +30,7 @@ const Table = () => {
     }
   }, []);*/
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => mockedData, []);
+  const data = useMemo(() => stateData, []);
 
   const {
     getTableProps,

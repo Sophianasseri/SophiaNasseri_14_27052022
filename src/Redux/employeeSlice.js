@@ -16,7 +16,9 @@ export const employeeSlice = createSlice({
   name: 'employee',
   initialState,
   reducers: {
-    saveEmployee: (state, action) => action.payload,
+    saveEmployee: (state, action) => {
+      state.employee = action.payload;
+    },
   },
 });
 
