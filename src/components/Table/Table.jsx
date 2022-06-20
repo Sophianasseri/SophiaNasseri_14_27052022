@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import {
   useTable,
@@ -7,28 +7,13 @@ import {
   usePagination,
 } from 'react-table';
 
-import { mockedData } from '../../Data/data';
 import { COLUMNS } from './columns';
 
 import GlobalFilter from './GlobalFilter/GlobalFilter';
 
 const Table = () => {
-  //const [items, setItems] = useState([]);
-
-  const firstName = useSelector((state) => state.employees);
-
   let stateData = [...useSelector((state) => state.employees)];
-  //stateData.push(firstName);
-  console.log(stateData);
 
-  /* useEffect(() => {
-    const employees = localStorage.getItem('employees')
-      ? JSON.parse(localStorage.getItem('employees'))
-      : [];
-    if (employees) {
-      setItems(employees);
-    }
-  }, []);*/
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => stateData, []);
 
