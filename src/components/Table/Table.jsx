@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import Select from 'react-select';
 import {
   useTable,
   useGlobalFilter,
@@ -8,6 +9,7 @@ import {
 } from 'react-table';
 
 import { COLUMNS } from './columns';
+import { tableEntries, mockedData } from '../../Data/data';
 
 import GlobalFilter from './GlobalFilter/GlobalFilter';
 
@@ -15,7 +17,7 @@ const Table = () => {
   let stateData = [...useSelector((state) => state.employees)];
 
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => stateData, []);
+  const data = useMemo(() => mockedData, []);
 
   const {
     getTableProps,
@@ -66,22 +68,29 @@ const Table = () => {
     );
   };
 
+  const SelectCustomTheme = (theme) => {
+    return {
+      ...theme,
+      colors: {
+        ...theme.colors,
+        primary: '#5a6f07',
+        primary25: '#CDD2B8',
+      },
+    };
+  };
+
   return (
     <>
       <div className="filter">
         <div>
           <span>Show</span>
-          <select
+          <Select
             className="entry-select"
-            value={pageSize}
-            onChange={(e) => setPageSize(Number(e.target.value))}
-          >
-            {[10, 25, 50, 100].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                {pageSize}
-              </option>
-            ))}
-          </select>
+            options={tableEntries}
+            defaultValue={tableEntries[0]}
+            onChange={(e) => setPageSize(Number(e.value))}
+            theme={SelectCustomTheme}
+          />
           <span>entries</span>
         </div>
 

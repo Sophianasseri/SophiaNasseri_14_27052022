@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import useModal from '../hooks/useModal';
@@ -31,9 +31,16 @@ const CreateEmployee = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem('firstName', JSON.stringify(firstName));
-  }, [firstName]);
+  const customTheme = (theme) => {
+    return {
+      ...theme,
+      colors: {
+        ...theme.colors,
+        primary: '#5a6f07',
+        primary25: '#CDD2B8',
+      },
+    };
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -113,6 +120,7 @@ const CreateEmployee = () => {
               options={stateOptions}
               defaultValue={stateOptions[0]}
               onChange={(e) => setUsState(e.value)}
+              theme={customTheme}
             />
 
             <label htmlFor="zip-code">Zip Code</label>
@@ -129,6 +137,7 @@ const CreateEmployee = () => {
             options={department}
             defaultValue={department[0]}
             onChange={(e) => setDpt(e.value)}
+            theme={customTheme}
           />
           <button
             className="submit-btn btn"
