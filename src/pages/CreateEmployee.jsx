@@ -140,6 +140,15 @@ const CreateEmployee = () => {
             theme={customTheme}
           />
           <button
+            disabled={
+              !firstName ||
+              !lastName ||
+              !dateOfBirth ||
+              !startDate ||
+              !city ||
+              !street ||
+              !zipCode
+            }
             className="submit-btn btn"
             type="submit"
             onClick={(e) => {
