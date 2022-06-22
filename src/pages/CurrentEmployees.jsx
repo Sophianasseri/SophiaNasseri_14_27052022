@@ -3,7 +3,7 @@ import Table from '../components/Table/Table';
 
 const CurrentEmployees = () => {
   return (
-    <div className="table-container">
+    <div className="table-page">
       <h1 className="table-title">Current Employees</h1>
       <Table />
       <Link className="home-link" to="/">

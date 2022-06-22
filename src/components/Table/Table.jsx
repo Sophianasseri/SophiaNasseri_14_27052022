@@ -82,9 +82,9 @@ const Table = () => {
   const pagesArr = [...new Array(pageOptions.length)];
 
   return (
-    <>
+    <div className="table-container">
       <div className="filter">
-        <div>
+        <div className="entries-selection">
           <span>Show</span>
           <Select
             className="entry-select"
@@ -190,7 +190,7 @@ const Table = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

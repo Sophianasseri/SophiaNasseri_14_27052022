@@ -77,12 +77,25 @@ label {
   cursor: default;
   color: grey;
 }
+.table-page {
+  max-width: 1440px;
+  margin: auto;
+}
+.table-container {
+  margin: 0 20px;
+  max-width: 1440px;
+}
 
 .filter {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 10px;
+}
+.entries-selection {
+  display: flex;
+  align-items: center;
 }
 .entry-select {
   margin: 0 5px;
@@ -135,7 +148,7 @@ table th {
   font-size: 12px;
 }
 .active {
-  color: #761ba8;
+  color: black;
 }
 .pagination {
   display: flex;
@@ -179,4 +192,7 @@ table th {
 
 .hide {
   display: none;
+}
+.closeBtn {
+  background: #5a6f07 !important;
 }
