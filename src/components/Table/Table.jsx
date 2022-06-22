@@ -79,6 +79,8 @@ const Table = () => {
     };
   };
 
+  const pagesArr = [...new Array(pageOptions.length)];
+
   return (
     <>
       <div className="filter">
@@ -155,31 +157,33 @@ const Table = () => {
         <EntriesCount />
         <div>
           <button
-            className="page-btn btn"
+            className="prevNext-btn "
             onClick={() => previousPage()}
             disabled={!canPreviousPage}
           >
             Previous
           </button>
-          <span>
-            <input
-              className="page-input"
-              type="number"
-              defaultValue={pageIndex + 1}
-              min={pageOptions.length - 1}
-              max={pageOptions.length}
-              onChange={(e) => {
-                const pageNumber = e.target.value
-                  ? Number(e.target.value) - 1
-                  : 0;
-                gotoPage(pageNumber);
-              }}
-            />
-            of {pageOptions.length}
+          <span className="page-numbers">
+            {pagesArr.map((num, index) => (
+              <button
+                className={`page-btn ${
+                  index + 1 === pageIndex + 1 ? 'active-btn' : ''
+                }`}
+                value={index + 1}
+                onClick={(e) => {
+                  const pageNumber = e.target.value
+                    ? Number(e.target.value) - 1
+                    : 0;
+                  gotoPage(pageNumber);
+                }}
+              >
+                {index + 1}
+              </button>
+            ))}
           </span>
 
           <button
-            className="page-btn btn"
+            className="prevNext-btn"
             onClick={() => nextPage()}
             disabled={!canNextPage}
           >
