@@ -17,7 +17,7 @@ const Table = () => {
   let stateData = [...useSelector((state) => state.employees)];
 
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => mockedData, []);
+  const data = useMemo(() => stateData, []);
 
   const {
     getTableProps,
@@ -155,7 +155,7 @@ const Table = () => {
 
       <div className="pagination">
         <EntriesCount />
-        <div>
+        <div className={`${pageOptions < 1 ? 'hide' : ''}`}>
           <button
             className="prevNext-btn "
             onClick={() => previousPage()}
@@ -181,7 +181,6 @@ const Table = () => {
               </button>
             ))}
           </span>
-
           <button
             className="prevNext-btn"
             onClick={() => nextPage()}
