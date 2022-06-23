@@ -101,9 +101,12 @@ const Table = () => {
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr key={headerGroup} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <th
+                  key={column}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                >
                   <div className="column-header">
                     {column.render('Header')}
 
@@ -142,7 +145,7 @@ const Table = () => {
             page.map((row) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps}>
+                <tr key={row.id} {...row.getRowProps}>
                   {row.cells.map((cell) => {
                     return (
                       <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
@@ -174,6 +177,7 @@ const Table = () => {
           <span className="page-numbers">
             {pagesArr.map((num, index) => (
               <button
+                key={`page-${index}`}
                 className={`page-btn ${
                   index + 1 === pageIndex + 1 ? 'active-btn' : ''
                 }`}
