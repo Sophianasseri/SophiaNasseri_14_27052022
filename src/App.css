@@ -142,6 +142,11 @@ table th {
   color: white;
 }
 
+.noData-msg {
+  text-align: center;
+  height: 200px;
+}
+
 .sort-arrows {
   display: flex;
   flex-direction: column;

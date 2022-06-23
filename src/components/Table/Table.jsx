@@ -138,18 +138,26 @@ const Table = () => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
+          {page.length > 0 ? (
+            page.map((row) => {
+              prepareRow(row);
+              return (
+                <tr {...row.getRowProps}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    );
+                  })}
+                </tr>
+              );
+            })
+          ) : (
+            <tr>
+              <td className="noData-msg" colSpan={9}>
+                No data available in table
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
 
