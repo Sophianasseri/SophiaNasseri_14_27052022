@@ -94,6 +94,7 @@ const EmployeeForm = () => {
           />
           <label htmlFor="state">State</label>
           <Select
+            inputId="state"
             options={stateOptions}
             defaultValue={stateOptions[0]}
             onChange={(e) => setUsState(e.value)}
@@ -109,6 +110,7 @@ const EmployeeForm = () => {
         </fieldset>
         <label htmlFor="department">Department</label>
         <Select
+          inputId="department"
           options={department}
           defaultValue={department[0]}
           onChange={(e) => setDpt(e.value)}
