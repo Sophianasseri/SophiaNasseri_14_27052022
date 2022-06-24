@@ -56,7 +56,9 @@ const Table = () => {
       <div className="filter">
         <div className="entries-selection">
           <span>Show</span>
+          <label htmlFor="entries"></label>
           <Select
+            inputId="entries"
             className="entry-select"
             options={tableEntries}
             defaultValue={tableEntries[0]}

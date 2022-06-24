@@ -10,9 +10,11 @@ const GlobalFilter = ({ filter, setFilter }) => {
   }, 300);
 
   return (
-    <span>
-      Search :{' '}
+    <div className="search-filter">
+      <span>Search :</span>
+      <label htmlFor="search"></label>
       <input
+        id="search"
         className="search-input"
         value={value || ''}
         onChange={(e) => {
@@ -20,7 +22,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
           onChange(e.target.value);
         }}
       ></input>
-    </span>
+    </div>
   );
 };
 

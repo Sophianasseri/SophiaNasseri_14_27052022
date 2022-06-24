@@ -100,12 +100,16 @@ label {
 .entry-select {
   margin: 0 5px;
 }
-
+.search-filter {
+  display: flex;
+  align-items: center;
+}
 .search-input {
   border: rgb(211, 209, 209) 1px solid;
   border-radius: 5px;
   padding: 8px;
   width: 200px;
+  margin-left: 5px;
 }
 
 table {
@@ -138,7 +142,7 @@ table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #93ad18;
+  background-color: #5a6f07;
   color: white;
 }
 
