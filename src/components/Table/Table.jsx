@@ -20,6 +20,7 @@ const Table = () => {
   let stateData = [...useSelector((state) => state.employees)];
 
   const columns = useMemo(() => COLUMNS, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const data = useMemo(() => stateData, []);
 
   const {
